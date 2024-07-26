@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://akiha.ddns.net/personal/about/index.html</loc>
+    
+    <lastmod>2024-07-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://akiha.ddns.net/posts/20240725a.html</loc>
     
     <lastmod>2024-07-25</lastmod>
@@ -84,15 +93,6 @@
   
   <url>
     <loc>http://akiha.ddns.net/life/games/index.html</loc>
-    
-    <lastmod>2023-03-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://akiha.ddns.net/personal/about/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
