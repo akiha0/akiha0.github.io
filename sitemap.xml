@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://akiha.ddns.net/box/nav/index.html</loc>
+    
+    <lastmod>2024-07-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://akiha.ddns.net/box/gallery/photo/index.html</loc>
     
     <lastmod>2024-07-27</lastmod>
@@ -93,15 +102,6 @@
   
   <url>
     <loc>http://akiha.ddns.net/box/animation/index.html</loc>
-    
-    <lastmod>2023-03-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://akiha.ddns.net/box/nav/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
