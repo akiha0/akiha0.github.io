@@ -2,9 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://akiha.ddns.net/life/music/index.html</loc>
+    <loc>http://akiha.ddns.net/box/gallery/photo/index.html</loc>
     
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://akiha.ddns.net/box/gallery/index.html</loc>
+    
+    <lastmod>2024-07-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://akiha.ddns.net/life/games/index.html</loc>
+    
+    <lastmod>2024-07-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +31,16 @@
   <url>
     <loc>http://akiha.ddns.net/life/movies/index.html</loc>
     
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://akiha.ddns.net/life/music/index.html</loc>
+    
+    <lastmod>2024-07-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -74,25 +101,7 @@
   </url>
   
   <url>
-    <loc>http://akiha.ddns.net/box/gallery/index.html</loc>
-    
-    <lastmod>2023-03-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://akiha.ddns.net/box/nav/index.html</loc>
-    
-    <lastmod>2023-03-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://akiha.ddns.net/life/games/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -175,7 +184,7 @@
 
   <url>
     <loc>http://akiha.ddns.net/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -183,42 +192,42 @@
   
   <url>
     <loc>http://akiha.ddns.net/tags/Markdown/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://akiha.ddns.net/tags/%E5%A4%96%E6%8C%82%E6%A0%87%E7%AD%BE/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://akiha.ddns.net/tags/AI/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://akiha.ddns.net/tags/%E8%A7%86%E9%A2%91/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://akiha.ddns.net/tags/%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://akiha.ddns.net/tags/linux/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -227,21 +236,21 @@
   
   <url>
     <loc>http://akiha.ddns.net/categories/%E6%BC%94%E7%A4%BA/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://akiha.ddns.net/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9C%8D%E5%8A%A1/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://akiha.ddns.net/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-07-26</lastmod>
+    <lastmod>2024-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
