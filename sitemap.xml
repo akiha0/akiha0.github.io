@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://akiha.ddns.net/personal/love/index.html</loc>
+    <loc>http://akiha.ddns.net/personal/about/index.html</loc>
     
     <lastmod>2024-08-06</lastmod>
     
@@ -11,9 +11,9 @@
   </url>
   
   <url>
-    <loc>http://akiha.ddns.net/posts/20240728b.html</loc>
+    <loc>http://akiha.ddns.net/personal/love/index.html</loc>
     
-    <lastmod>2024-07-28</lastmod>
+    <lastmod>2024-08-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -86,15 +86,6 @@
     <loc>http://akiha.ddns.net/life/music/index.html</loc>
     
     <lastmod>2024-07-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://akiha.ddns.net/personal/about/index.html</loc>
-    
-    <lastmod>2024-07-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -253,14 +244,14 @@
   </url>
   
   <url>
-    <loc>http://akiha.ddns.net/tags/linux/</loc>
+    <loc>http://akiha.ddns.net/tags/TTS/</loc>
     <lastmod>2024-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://akiha.ddns.net/tags/TTS/</loc>
+    <loc>http://akiha.ddns.net/tags/linux/</loc>
     <lastmod>2024-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
