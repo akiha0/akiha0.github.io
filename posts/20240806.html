@@ -1,0 +1,629 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><div id="myscoll"></div><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>docker 常用命令大全 | akiha</title><meta name="keywords" content="docker"><meta name="author" content="akiha"><meta name="copyright" content="akiha"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="🥧docker 常用命令大全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 常用命令大全">
+<meta property="og:url" content="http://akiha.ddns.net/posts/20240806.html">
+<meta property="og:site_name" content="akiha">
+<meta property="og:description" content="🥧docker 常用命令大全">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://source.fomal.cc/img/default_cover_2.webp">
+<meta property="article:published_time" content="2024-08-06T15:02:03.000Z">
+<meta property="article:modified_time" content="2024-08-06T15:02:03.000Z">
+<meta property="article:author" content="akiha">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://source.fomal.cc/img/default_cover_2.webp"><link rel="shortcut icon" href="/"><link rel="canonical" href="http://akiha.ddns.net/posts/20240806"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/4.0.31/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'docker 常用命令大全',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-06 23:02:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/element-ui/2.15.6/theme-chalk/index.css"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><style id="menu_shadow"></style><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="akiha" type="application/atom+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/07/22/avatar.md.jpg" onerror="onerror=null;src='/assets/r1.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-home"></use></svg><span class="menu_word" style="font-size:17px"> 首页</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon--article"></use></svg><span class="menu_word" style="font-size:17px"> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-guidang1">                   </use></svg><span class="menu_word" style="font-size:17px"> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-sekuaibiaoqian">                   </use></svg><span class="menu_word" style="font-size:17px"> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-fenlei">                   </use></svg><span class="menu_word" style="font-size:17px"> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-pinweishenghuo"></use></svg><span class="menu_word" style="font-size:17px"> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/life/music/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-yinle">                   </use></svg><span class="menu_word" style="font-size:17px"> 八音盒</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/life/movies/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-dianying1">                   </use></svg><span class="menu_word" style="font-size:17px"> 影院</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/life/games/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-youxishoubing">                   </use></svg><span class="menu_word" style="font-size:17px"> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-xiangzi"></use></svg><span class="menu_word" style="font-size:17px"> 八宝箱</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/box/gallery/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-tubiaozhizuomoban">                   </use></svg><span class="menu_word" style="font-size:17px"> 画廊</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/animation/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-nvwumao">                   </use></svg><span class="menu_word" style="font-size:17px"> 动画</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/nav/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-zhifengche">                   </use></svg><span class="menu_word" style="font-size:17px"> 网址导航</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-maoliang"></use></svg><span class="menu_word" style="font-size:17px"> 个人</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/personal/love/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-love-sign">                   </use></svg><span class="menu_word" style="font-size:17px"> 恋爱小屋</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/personal/about/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-paperplane">                   </use></svg><span class="menu_word" style="font-size:17px"> 个人简历</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">akiha</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-home"></use></svg><span class="menu_word" style="font-size:17px"> 首页</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon--article"></use></svg><span class="menu_word" style="font-size:17px"> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-guidang1">                   </use></svg><span class="menu_word" style="font-size:17px"> 归档</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-sekuaibiaoqian">                   </use></svg><span class="menu_word" style="font-size:17px"> 标签</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-fenlei">                   </use></svg><span class="menu_word" style="font-size:17px"> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-pinweishenghuo"></use></svg><span class="menu_word" style="font-size:17px"> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/life/music/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-yinle">                   </use></svg><span class="menu_word" style="font-size:17px"> 八音盒</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/life/movies/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-dianying1">                   </use></svg><span class="menu_word" style="font-size:17px"> 影院</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/life/games/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-youxishoubing">                   </use></svg><span class="menu_word" style="font-size:17px"> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-xiangzi"></use></svg><span class="menu_word" style="font-size:17px"> 八宝箱</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/box/gallery/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-tubiaozhizuomoban">                   </use></svg><span class="menu_word" style="font-size:17px"> 画廊</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/animation/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-nvwumao">                   </use></svg><span class="menu_word" style="font-size:17px"> 动画</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/box/nav/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-zhifengche">                   </use></svg><span class="menu_word" style="font-size:17px"> 网址导航</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-maoliang"></use></svg><span class="menu_word" style="font-size:17px"> 个人</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/personal/love/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-love-sign">                   </use></svg><span class="menu_word" style="font-size:17px"> 恋爱小屋</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/personal/about/"><svg class="menu_icon faa-tada" aria-hidden="true" style="width:1.30em;height:1.30em;vertical-align:-0.15em;fill:currentColor;overflow:hidden;"><use xlink:href="#icon-paperplane">                   </use></svg><span class="menu_word" style="font-size:17px"> 个人简历</span></a></li></ul></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()">PAGE_NAME</a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:24px;width:24px;fill:currentColor;position:relative;top:6px" aria-hidden="true"><use xlink:href="#icon-valentine_-search-love-find-heart"></use></svg><span> 搜索</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:26px;width:26px;fill:currentColor;position:relative;top:8px" aria-hidden="true"><use xlink:href="#icon-tupian1"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:25px;width:25px;fill:currentColor;position:relative;top:7px" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon">       </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">docker 常用命令大全</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><svg class="meta_icon post-meta-icon" style="width:30px;height:30px;position:relative;top:10px"><use xlink:href="#icon-rili"></use></svg><span class="post-meta-label">发表于 </span><time class="post-meta-date-created" datetime="2024-08-06T15:02:03.000Z" title="发表于 2024-08-06 23:02:03">2024-08-06</time><span class="post-meta-separator">|</span><svg class="meta_icon post-meta-icon" style="width:18px;height:18px;position:relative;top:5px"><use xlink:href="#icon-gengxin1"></use></svg><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-06T15:02:03.000Z" title="更新于 2024-08-06 23:02:03">2024-08-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><svg class="meta_icon post-meta-icon" style="width:18px;height:18px;position:relative;top:5px"><use xlink:href="#icon-biaoqian"></use></svg><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><svg class="meta_icon post-meta-icon" style="width:25px;height:25px;position:relative;top:8px"><use xlink:href="#icon-charuword"></use></svg><span class="post-meta-label">字数总计:</span><span class="word-count">4496</span><span class="post-meta-separator">|</span><svg class="meta_icon post-meta-icon" style="width:20px;height:20px;position:relative;top:5px"><use xlink:href="#icon-shizhong"></use></svg><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="docker 常用命令大全"><svg class="meta_icon post-meta-icon" style="width:25px;height:25px;position:relative;top:5px"><use xlink:href="#icon-eye"></use></svg><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="（一）docker-基础命令">（一）docker 基础命令</h2>
+<p><strong>启动docker</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<p><strong>关闭docker</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+<p><strong>重启docker</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p><strong>docker设置随服务启动而自启动</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+<p><strong>查看docker 运行状态</strong></p>
+<p>------如果是在运行中 输入命令后 会看到绿色的active</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+<p><strong>查看docker 版本号信息</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/caa560ca3db1c54f219c4188921d416d.png" alt="image-20200521111253771"></p>
+<p><strong>docker 帮助命令</strong></p>
+<p>忘记了某些命令便可使用此进行查看与回顾</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --help</span><br></pre></td></tr></table></figure>
+<p>比如 咱忘记了 拉取命令 不知道可以带哪些参数 咱可以这样使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull --help</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/25935c4658af9104099e24b6595f4e2b.png" alt="image-20200521111620131"></p>
+<h2 id="（二）docker-镜像命令">（二）docker 镜像命令</h2>
+<p><strong>查看自己服务器中docker 镜像列表</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p><strong>搜索镜像</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker search 镜像名</span><br><span class="line">docker search --filter=STARS=9000 mysql 搜索 STARS &gt;9000的 mysql 镜像</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/c41b2935425dd315c95e94fa49720bfc.png" alt="image-20200521112530211"></p>
+<p><strong>拉取镜像</strong> 不加tag(版本号) 即拉取docker仓库中 该镜像的最新版本latest 加:tag 则是拉取指定版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名 </span><br><span class="line">docker pull 镜像名:tag</span><br></pre></td></tr></table></figure>
+<p>拉取最新版 mysql</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/13462181541c9feeb965b245c78b566d.png" alt="image-20200521113237254"></p>
+<p>咱再来拉取一个指定版本号 镜像 至于版本号呢 可以在docker hub中查看</p>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/search?type=image">docker官方镜像搜索</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/8ed2efe762ffe5c5cc24530319028c51.png" alt="image-20200521113551977"></p>
+<p>例如 拉取 mysql 5.7.30 ------------------这里出现了一些小东西 感觉挺新奇的 随着学习深入再回过头来看吧</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/79be02b781a3054cb695b833d8e57633.png" alt="image-20200521113845254"></p>
+<p>为什么提示文件存在 &gt;&gt;&gt;&gt; 请戳： <a target="_blank" rel="noopener" href="https://blog.csdn.net/leilei1366615/article/details/106269231">docker 文件分层与数据卷挂载</a></p>
+<p><strong>运行镜像</strong> ----咱拉取一个tomcat 跑起来试一试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run 镜像名</span><br><span class="line">docker run 镜像名:Tag</span><br></pre></td></tr></table></figure>
+<p><strong>ex：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull tomcat</span><br><span class="line"></span><br><span class="line">docker run tomcat</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/abffb6b1f7f60886c6c7c9cdfbafcdf2.png" alt="image-20200521114405215"></p>
+<p>发现咱运行后 出现tomcat 默认占用的8080 端口 说明该镜像已经是启动了 ，但是 咱好像鼠标没有回到咱服务器上了 ，这怎么办呢 ？</p>
+<p>使用 <code>Ctrl+C</code> （注：此方式虽然可以退出容器，但此种命令操作方式却是错误的，详细缘由请见下文的容器命令）</p>
+<p><strong>docker中 run 命令是十分复杂的 有什么持久运行 映射端口 设置容器别名 数据卷挂载等</strong></p>
+<hr>
+<p>一通测试，发现我们拉了好多镜像了，但我们现在根本用不着，这些无用镜像怎么删除呢？</p>
+<p><strong>删除镜像</strong> ------当前镜像没有被任何容器使用才可以删除</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">删除一个</span></span><br><span class="line">docker rmi -f 镜像名/镜像ID</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">删除多个 其镜像ID或镜像用用空格隔开即可</span> </span><br><span class="line">docker rmi -f 镜像名/镜像ID 镜像名/镜像ID 镜像名/镜像ID</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">删除全部镜像  -a 意思为显示全部, -q 意思为只显示ID</span></span><br><span class="line">docker rmi -f $(docker images -aq)</span><br></pre></td></tr></table></figure>
+<p><strong>强制删除镜像</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image rm 镜像名称/镜像ID</span><br></pre></td></tr></table></figure>
+<p>镜像的基础命令就到这里 下方会使用更复杂的 docker run 命令 来根据镜像启动容器</p>
+<p><strong>保存镜像</strong><br>
+将我们的镜像 保存为tar 压缩文件 这样方便镜像转移和保存 ,然后 可以在任何一台安装了docker的服务器上 加载这个镜像</p>
+<p>命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save 镜像名/镜像ID -o 镜像保存在哪个位置与名字</span><br></pre></td></tr></table></figure>
+<p>exmaple:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save tomcat -o /myimg.tar</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/e36af035c15c3a11937c6586cbacd85f.png" alt="在这里插入图片描述"></p>
+<p><strong>保存镜像任务执行完毕，我们来看下指定位置下是否有该tar？</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/599b8c31a44afe4ae914647a7a081696.png" alt="在这里插入图片描述"></p>
+<p><strong>加载镜像</strong><br>
+任何装 docker 的地方加载镜像保存文件,使其恢复为一个镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i 镜像保存文件位置</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/72b767ff826029d6e3149b88f8bb992f.png" alt="在这里插入图片描述"></p>
+<p><strong>加载文件 恢复为镜像</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/8f07c5e4f6e1eeedbb7869489bf4e136.png" alt="在这里插入图片描述"></p>
+<p><strong>查看镜像 测试镜像功能是否正常</strong></p>
+<p>我们来把解压的镜像 run一下。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/9656b016086d0ecda9c212a9345c459a.png" alt="在这里插入图片描述"></p>
+<p><strong>镜像标签</strong><br>
+有的时候呢，我们需要对一个镜像进行分类或者版本迭代操作，比如我们一个微服务已经打为docker镜像，但是想根据环境进行区分为develop环境与alpha环境，这个时候呢，我们就可以使用Tag，来进对镜像做一个标签添加，从而行进区分；版本迭代逻辑也是一样，根据不同的tag进行区分</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app:1.0.0 基础镜像</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">分离为开发环境</span></span><br><span class="line">app:develop-1.0.0   </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">分离为alpha环境</span></span><br><span class="line">app:alpha-1.0.0   </span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</span><br><span class="line"></span><br><span class="line">docker tag 源镜像名:TAG 想要生成新的镜像名:新的TAG</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果省略TAG 则会为镜像默认打上latest TAG</span></span><br><span class="line">docker tag aaa bbb</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">上方操作等于 docker tag aaa:latest bbb:<span class="built_in">test</span></span></span><br></pre></td></tr></table></figure>
+<p>ex：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">我们根据镜像 quay.io/minio/minio 添加一个新的镜像 名为 aaa 标签Tag设置为1.2.3</span></span><br><span class="line">docker tag quay.io/minio/minio:1.2.3 aaa:1.2.3</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">我们根据镜像 app-user:1.0.0 添加一个新的镜像 名为 app-user 标签Tag设置为alpha-1.0.0</span></span><br><span class="line">docker tag app-user:1.0.0 app-user:alpha-1.0.0</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/39712991547638a2e395aaf5a40c186e.png" alt="image-20220622224056378"></p>
+<h2 id="（三）docker-容器命令">（三）docker 容器命令</h2>
+<p>前言已经说了 docker 容器 就好比 咱java中的new出来对象（docker run 镜像 产生一个该镜像具体容器实例）,docker 容器的启动需要 镜像的支持</p>
+<p>先放上 docker 容器查看命令</p>
+<p><strong>查看正在运行容器列表</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<p><strong>查看所有容器</strong> -----包含正在运行 和已停止的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p><strong>容器怎么来呢 可以通过run 镜像 来构建 自己的容器实例</strong></p>
+<p><strong>运行一个容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-it 表示 与容器进行交互式启动 -d 表示可后台运行容器 （守护式运行）  --name 给要运行的容器 起的名字  /bin/bash  交互路径</span></span><br><span class="line">docker run -it -d --name 要取的别名 镜像名:Tag /bin/bash </span><br></pre></td></tr></table></figure>
+<p>例如我们要启动一个redis 把它的别名取为redis001 并交互式运行 需要的命令 —我这里指定版本号为5.0.5</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1. 拉取redis 镜像</span></span><br><span class="line">docker pull redis:5.0.5</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2.命令启动</span></span><br><span class="line">docker run -it -d --name redis001 redis:5.0.5 /bin/bash</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/dffefdec5248d57ae32985a308e79c46.png" alt="image-20200521141429893"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">3.查看已运行容器</span></span><br><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/d6873ae3ff887bbfdf7a08ce20f7e660.png" alt="image-20200521141530871"></p>
+<p>发现看到了 redis 使用了6379 端口 那么我们在关闭防火墙或开启了安全组的情况下 是否可以进行访问呢？</p>
+<p>为了 区分 咱们使用linux 命令 查看一下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">netstat是控制台命令,是一个监控TCP/IP网络的非常有用的工具，它可以显示路由表、实际的网络连接以及每一个网络接口设备的状态信息</span></span><br><span class="line">netstat -untlp</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/a5ea0c1bddc09a26436a0232060a7d87.png" alt="image-20200521142934877"></p>
+<p><strong>惊讶的发现，我们redis容器启动占用的 6379端口netstat 没有显示出来？什么情况？赶紧使用 redis desktop manger 连接测试一下</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/08d55c12731adeca1c2e34a9f6742eb6.png" alt="image-20200521143043536"></p>
+<p><strong>为什么不行呢 已经确定了 docker 中 redis 容器已经是在运行中 且占有端口 6379啊？</strong></p>
+<p><strong>因为：占用的6379端口 仅仅是在容器中内部本身的端口,与宿主机的6379端口并无联系，我们通过宿主机Ip:6379访问此redis示例，那自然是找不到的哟！</strong></p>
+<hr>
+<p><strong>这里，来补充一点Docker容器的知识！</strong></p>
+<p><strong>每一个 Docker容器都是独立和安全的应用平台（我们可以理解为，每一个docker容器都相当于在我们的服务器上占用资源然后开辟了属于自己的一个空间（也可以理解为服务器））</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/398a66708c98bfe9a6515e5d41a6cab8.png" alt="image-20210905223422100"></p>
+<p><strong>这是Docker 一大特点，每个容器之间环境都是隔离的!!!</strong></p>
+<p>我们甚至可以在一个服务器上，使用docker镜像，来跑出N个 mysql实例（尽管，他们的默认端口都是一样的，但还是那句话，容器间，环境是隔离的。A容器中的3306 与B容器的3306毫无关系，因为其不在一个世界呀!）</p>
+<p><strong>默认情况下，我们是无法通过宿主机（安装docker的服务器）端口来直接访问容器的 ,因为docker容器自己开辟空间的端口与宿主机端口没有联系…</strong></p>
+<p>如果外部想要访问容器，那必须得让容器中的端口与宿主机的端口建立联系绑定起来，这个正式的概念叫做 <code>容器端口映射</code></p>
+<p>有了端口映射，我们就可以将宿主机端口与 容器端口绑定起来，比如 我们建立宿主机的6379端口与容器redis6379端口绑定起来，那么再访问宿主机Ip:6379 就可以访问到对应容器了！</p>
+<p>接下来 进行 <strong>容器端口映射</strong>演示</p>
+<p>首先<strong>停止容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先停止咱之前运行的 redis 容器</span> </span><br><span class="line">docker stop 容器名/容器ID</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/a4a79554375c3d3e253be6162b88367f.png" alt="image-20200521143812702"></p>
+<p>然后<strong>删除容器</strong> -----不经意间 咱发现已经运行过这么多容器了 咱进行清理一下</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/2a3d6adac7a592f261f77f97921faa2b.png" alt="image-20200521143956423"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">删除一个容器</span></span><br><span class="line">docker rm -f 容器名/容器ID</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">删除多个容器 空格隔开要删除的容器名或容器ID</span></span><br><span class="line">docker rm -f 容器名/容器ID 容器名/容器ID 容器名/容器ID</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">删除全部容器</span></span><br><span class="line">docker rm -f $(docker ps -aq)</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/12d5a7138deb5c2eae2f27cbd7f1275b.png" alt="image-20200521144335238"></p>
+<p>这样 容器就已经删除完毕了 ，咱们接着弄 前边说的 端口映射</p>
+<p><strong>容器端口与服务器端口映射</strong></p>
+<p>命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-p 宿主机端口:容器端口</span><br></pre></td></tr></table></figure>
+<p>还是使用前方的 redis 镜像 尝试 将6379端口 映射到服务器的8888 如果成功了的话 那么咱们访问服务器的8888端口就会访问到咱们的 docker 中 的容器 redis002</p>
+<p>-p 8888:6379 解析 将容器内部的 6379端口与docker 宿主机（docker装在哪台服务器 哪台服务器就是宿主机）8888 端口进行映射 那通过外部访问宿主机8888端口 即可访问到 docker 容器 6379 端口了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name redis002 -p 8888:6379 redis:5.0.5 /bin/bash</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/94baa618f81b050904f690a1984feb07.png" alt="image-20200521144826072"></p>
+<p>在运行后 发现服务器的 8888 端口显示已被docker-proxy 所占用了 那么此时咱再用工具进行连接测试呢？</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/97836dcfbd305e8c46329238457e9502.png" alt="image-20200521161729868"></p>
+<p><strong>那么容器端口映射有没有什么限制呢？</strong></p>
+<p>有的，虽说每个容器之间，环境都是隔离的，但是宿主机每个端口都是一个，8888端口被redis002容器绑定了，那么其他所有的容器都不可以使用8888这个端口了!!!</p>
+<hr>
+<p>有时候，我们需要进入容器内部，修改其配置文件，那么如何才能进入容器内呢？</p>
+<p><strong>进入容器方式一</strong> 这里咱就进入 前面的 redis001容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 容器名/容器ID /bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">进入 前面的 redis001容器</span>   </span><br><span class="line">docker exec -it redis001 /bin/bash</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/5b060e2f22ccd5930ce31d3d666f1773.png" alt="image-20200521141914333"></p>
+<p>可以看到 我已经从主机alibyleilei 跳到了容器ID 对应下的 /data 已经是进入到容器内部了</p>
+<p><strong>进入容器方式二</strong> —推荐使用 exec 方式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach 容器名/容器ID</span><br></pre></td></tr></table></figure>
+<p>那怎么退出容器呢 ？</p>
+<p><strong>从容器内 退出到自己服务器中</strong> 需注意 两个退出命令的区别</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">-----直接退出  未添加 -d(持久化运行容器) 时 执行此参数 容器会被关闭</span>  </span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">优雅退出 --- 无论是否添加-d 参数 执行此命令容器都不会被关闭</span></span><br><span class="line">Ctrl + p + q</span><br></pre></td></tr></table></figure>
+<p><strong>停止容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器ID/容器名</span><br></pre></td></tr></table></figure>
+<p><strong>重启容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart 容器ID/容器名</span><br></pre></td></tr></table></figure>
+<p><strong>启动容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器ID/容器名</span><br></pre></td></tr></table></figure>
+<p><strong>kill 容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker kill 容器ID/容器名</span><br></pre></td></tr></table></figure>
+<p><strong>容器文件拷贝</strong> —无论容器是否开启 都可以进行拷贝</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker <span class="built_in">cp</span> 容器ID/名称:文件路径  要拷贝到外部的路径   |     要拷贝到外部的路径  容器ID/名称:文件路径</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">从容器内 拷出</span></span><br><span class="line">docker cp 容器ID/名称: 容器内路径  容器外路径</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">从外部 拷贝文件到容器内</span></span><br><span class="line">docker  cp 容器外路径 容器ID/名称: 容器内路径</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>查看容器日志</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f --tail=要查看末尾多少行 默认all 容器ID</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/65c67ca371d9a6d179122427c9b304e6.png" alt="image-20200521204550123"></p>
+<p>我们在运维的时候，通常给一些软件喜欢设置开机自启动，例如 mysql、redis,这样测试环境服务器重启时可节省不少运维时间成本，那么我们如果是docker容器 是否也可以设置开机自启动容器呢？</p>
+<p>答案是 OKKKKK!</p>
+<p>启动容器时，使用docker run命令时 添加参数<code>--restart=always</code> 便表示，该容器随docker服务启动而自动启动</p>
+<p>ex:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name redis002 -p 8888:6379 --restart=always  redis:5.0.5 /bin/bash</span><br></pre></td></tr></table></figure>
+<p><strong>这个时候有小伙伴着急了，我都已经启动一个容器好久了，跑了很多数据了，现在才告诉我可以设置自启动？我把容器删了再启动，我数据咋办？？？</strong></p>
+<p><strong>哎！小伙汁，这个时候不要慌，我告诉你两个办法！</strong></p>
+<p><strong>方法一：担心数据丢了，这说明你在跑容器的时候没有进行数据挂载吧？？？</strong></p>
+<p><strong>你问我，什么是数据挂载？</strong></p>
+<p>简单来讲，就是将容器内的数据与外部宿主机文件绑定起来，类似一个双持久化，当容器删除时，宿主机文件数据目录仍在，下次启动容器只要将数据目录指向宿主机数据所在位置即可恢复！</p>
+<p>具体请参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/leilei1366615/article/details/106269231">docker 文件分层与数据卷挂载</a></p>
+<p>命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-v 宿主机文件存储位置:容器内文件位置</span><br></pre></td></tr></table></figure>
+<p>如此操作，就将 容器内指定文件挂载到了宿主机对应位置，-v命令可以多次使用，即一个容器可以同时挂载多个文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-v 宿主机文件存储位置:容器内文件位置 -v 宿主机文件存储位置:容器内文件位置 -v 宿主机文件存储位置:容器内文件位置</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行一个docker redis 容器 进行 端口映射 两个数据卷挂载 设置开机自启动</span></span><br><span class="line">docker run -d -p 6379:6379 --name redis505 --restart=always  -v /var/lib/redis/data/:/data -v /var/lib/redis/conf/:/usr/local/etc/redis/redis.conf  redis:5.0.5 --requirepass &quot;password&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>此方法完了你很无语？那还不是得删容器？是呀！没错！那么为什么你有数据恢复需求而没有想到数据持久化，数据恢复备份，数据卷挂载？自己DEMO的吃亏，是为了平时开发少扣脑壳多摸鱼！</strong></p>
+<p><strong>方法二：不想删容器，又想让这个容器设置开机自启动，那么我们修改其启动配置即可！</strong></p>
+<p>命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker  update --restart=always 容器Id 或者 容器名</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">docker container update --restart=always 容器Id 或者 容器名</span><br></pre></td></tr></table></figure>
+<p>如上，虽然不删容器就设置了自启动需求满足了，但是，危不危险，这个容器有没有需要数据恢复的情况？自己考量吧！！！</p>
+<p><strong>更换容器名</strong></p>
+<p>想给容器换个霸气炫酷吊炸天的名字？</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rename 容器ID/容器名 新容器名</span><br></pre></td></tr></table></figure>
+<p><strong>ex:</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/3a9b613e3db21a74da9e61851799358f.png" alt="image-20210917205221992"></p>
+<h2 id="（四）自己提交一个镜像">（四）自己提交一个镜像</h2>
+<p>我们运行的容器可能在镜像的基础上做了一些修改，有时候我们希望保存起来，封装成一个更新的镜像，这时候我们就需要使用 commit 命令来构建一个新的镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m=&quot;提交信息&quot; -a=&quot;作者信息&quot; 容器名/容器ID 提交后的镜像名:Tag</span><br></pre></td></tr></table></figure>
+<p>我们拉取一个tomcat镜像 并持久化运行 且设置与宿主机进行端口映射</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull tomcat</span><br><span class="line"></span><br><span class="line">docker run -itd -p8080:8080 --name tom tomcat /bin/bash</span><br></pre></td></tr></table></figure>
+<p>访问 咱的端口 发现访问404 这是因为咱配置了阿里云镜像后 所拉取得镜像都是最基础班的 仅仅包含其容器必要数据 例如 容器中 vim vi ll 命令都没有</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/c73945f7f7ceb56cdb30e48374b52937.png" alt="image-20200521195641404"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/d43d8d0f0ecb8a690609eb6b3b41e1a0.png" alt="image-20200521195934938"></p>
+<p>咱们的webapps 下一个文件都没有 ，访问肯定404罗</p>
+<p>不断查看 发现咱 webapps.dist 下是有文件的 我们把它拷贝的webapps 下 然后打包成一个新的镜像 后 访问查看是否进入到首页 不进入404页面</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/562bd325242d9751a98a3c5b94479b67.png" alt="image-20200521200509889"></p>
+<p>exit 退出容器</p>
+<p>使用 提交命令 将在运行的tomcat 容器 打包为一个全新的镜像 名字为tom Tag为1.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -a=&quot;leilei&quot; -m=&quot;第一次打包镜像，打包后直接访问还会404吗&quot; 231f2eae6896 tom:1.0</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/5f9a2296ecb987ae6ff29bd8f75490db.png" alt="image-20200521200732680"><br>
+为了区分 咱停止并删除之前tomcat 的容器<br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/6872ca36dbb545a7e5811b7b41063337.png" alt="image-20200521201009678"></p>
+<p>接下来 运行咱自己打包的镜像 tom:1.0</p>
+<p>设置容器名字为lei 映射端口为6500:8080</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -it  -p6500:8080 --name lei tom:1.0 /bin/bash</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/725600dc4a5a7b6f1e7e17a0911c74f5.png" alt="image-20200521202016653"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/ca2981704a4d42ccdfa33e5389ab3be5.png" alt="image-20200521201958111"></p>
+<p>访问6500 端口进入到了 tomcat 首页 说明 咱commit 镜像成功了</p>
+<h2 id="（五）docker-运维命令">（五）docker 运维命令</h2>
+<p>可能有时候发布会遇到如下错误:</p>
+<p><code>docker: write /var/lib/docker/tmp/GetImageBlob325372670: no space left on device</code></p>
+<p>这个错误是docker在写入的时候报错无机器无空间</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/4b6776d67a0d0f17f5adea692edc0af3.png" alt="image-20220120111317635"></p>
+<p><strong>查看docker工作目录</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker info | grep &quot;Docker Root Dir&quot;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/f0fead465fcd68bea24bbf3b59eaddf8.png" alt="image-20220120105454769"></p>
+<p><strong>查看docker磁盘占用总体情况</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -hs /var/lib/docker/ </span><br></pre></td></tr></table></figure>
+<p><strong>更改docker工作目录</strong></p>
+<p>首先我们需要先停止docker</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+<p>创建新工作目录文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /docker-data</span><br></pre></td></tr></table></figure>
+<p>原docker数据迁移</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r /var/lib/docker</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/7b20b5b7f36edd51f45448fba2a7b187.png" alt="image-20230605162818502"></p>
+<p>修改docke数据存储配置</p>
+<p>在之前我们配置镜像加速的时候已经有了该文件，所以我们直接修改内容接口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/docker/daemon.json</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">json 文件中添加一对键值对</span></span><br><span class="line">&quot;data-root&quot;:&quot;/docker-data&quot;</span><br></pre></td></tr></table></figure>
+<p>修改后内容如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://镜像加速地址&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span><span class="string">&quot;/docker-data&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>启动后我们的配置就生效了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br><span class="line"></span><br><span class="line">docker info | grep &quot;Docker Root Dir&quot;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/81e56576124404e40ebb00e9ebe2fec5.png" alt="image-20230605164640787"></p>
+<p><strong>查看Docker的磁盘使用具体情况</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system df</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/36f2544c3fd8c57ad08be0bfe53aef8f.png" alt="image-20220120105618983"></p>
+<p><strong>删除 无用的容器和 镜像</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> 删除异常停止的容器</span></span><br><span class="line">docker rm `docker ps -a | grep Exited | awk &#x27;&#123;print $1&#125;&#x27;` </span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> 删除名称或标签为none的镜像</span></span><br><span class="line">docker rmi -f  `docker images | grep &#x27;&lt;none&gt;&#x27; | awk &#x27;&#123;print $3&#125;&#x27;`</span><br></pre></td></tr></table></figure>
+<p><strong>清除所有无容器使用的镜像</strong></p>
+<p>注意，此命令只要是镜像无容器使用（容器正常运行）都会被删除，包括容器临时停止</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune -a</span><br></pre></td></tr></table></figure>
+<p><strong>查找大文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -type f -size +100M -print0 | xargs -0 du -h | sort -nr</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/392e535c5937c54401db15cbe2d39b8a.png" alt="image-20220120112409172"></p>
+<p><strong>查找指定docker使用目录下大于指定大小文件</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -type f -size +100M -print0 | xargs -0 du -h | sort -nr |grep &#x27;/var/lib/docker/overlay2/*&#x27;</span><br></pre></td></tr></table></figure>
+<p>ex：我这里是查找 /var/lib/docker/overlay2/* 开头的且大于100m的文件</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/08/06/d950fffa63944bd3989548e5c6e38602.png" alt="image-20220120111526448"></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>docker 常用命令大全</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://akiha.ddns.net/posts/20240806.html">http://akiha.ddns.net/posts/20240806.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>akiha</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2024-08-06</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2024-08-06</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/docker/"><div class="tags-punctuation"><svg class="faa-tada icon" style="height:1.1em;width:1.1em;fill:currentColor;position:relative;top:2px;margin-right:3px" aria-hidden="true"><use xlink:href="#icon-sekuaibiaoqian"></use></svg></div>docker</a></div></div><link rel="stylesheet" href="/css/coin.css" media="defer" onload="this.media='all'"/><div class="post-reward"><button class="tip-button reward-button"><span class="tip-button__text">投喂作者</span><div class="coin-wrapper"><div class="coin"><div class="coin__middle"></div><div class="coin__back"></div><div class="coin__front"></div></div></div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://tuchuang.voooe.cn/images/2024/07/28/wxQRcode.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/07/28/wxQRcode.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tuchuang.voooe.cn/images/2024/07/28/zfbQRcode.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tuchuang.voooe.cn/images/2024/07/28/zfbQRcode.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></button></div><audio id="coinAudio" src="https://npm.elemecdn.com/akilar-candyassets@1.0.36/audio/aowu.m4a"></audio><script defer="defer" src="/js/coin.js"></script><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/20240728a.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_2.webp" onerror="onerror=null;src='/assets/r2.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">运维工作周报模板</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><svg class="meta_icon" style="width:22px;height:22px;position:relative;top:5px"><use xlink:href="#icon-mulu1"></use></svg><span style="font-weight:bold">目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89docker-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-text">（一）docker 基础命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89docker-%E9%95%9C%E5%83%8F%E5%91%BD%E4%BB%A4"><span class="toc-text">（二）docker 镜像命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89docker-%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">（三）docker 容器命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E8%87%AA%E5%B7%B1%E6%8F%90%E4%BA%A4%E4%B8%80%E4%B8%AA%E9%95%9C%E5%83%8F"><span class="toc-text">（四）自己提交一个镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89docker-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4"><span class="toc-text">（五）docker 运维命令</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-color: transparent;"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium-web.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/posts/eec9786.html">魔改指南</a><a href="/box/nav/">网址导航</a></li><li><a href="/social/link/">我的朋友</a><a href="/comments/">留点什么</a></li><li><a href="/personal/about/">关于作者</a><a href="/archives/">文章归档</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/box/Gallery/">我的画廊</a><a href="/personal/bb/">我的唠叨</a></li><li><a href="/site/time/">建设进程</a><a href="/site/census/">网站统计</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div><div class="img-group-item"><a href="javascript:void(0)" title="广告位招租"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://lskypro.acozycotage.net/LightPicture/2022/12/65307a5828af6790.webp" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2022-2024</b></span><span><b>&nbsp;&nbsp;By akiha</b></span></div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v6.3.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://sourcebucket.s3.ladydaily.com/badge/Frame-Hexo-blue.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v4.3.1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://sourcebucket.s3.ladydaily.com/badge/Theme-Butterfly-6513df.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用多线部署，主线路托管于Vercel"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://sourcebucket.s3.ladydaily.com/badge/Hosted-Vercel-brightgreen.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://user.51.la/" style="margin-inline:5px" title="本站数据分析得益于51la技术支持"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://sourcebucket.s3.ladydaily.com/badge/Analytics-51la-3db1eb.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://icp.gov.moe/?keyword=20226665" style="margin-inline:5px" title="本站已加入萌ICP豪华套餐，萌ICP备20226665号"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://sourcebucket.s3.ladydaily.com/badge/萌ICP备-20226665-fe1384.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://bitiful.dogecast.com/buckets" style="margin-inline:5px" title="本网站经Service Worker分流至缤纷云对象存储"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=" https://sourcebucket.s3.ladydaily.com/badge/Bucket-缤纷云-9c62da.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://www.netdun.net/" style="margin-inline:5px" title="本站使用网盾星球提供CDN加速与防护"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://sourcebucket.s3.ladydaily.com/badge/CDN-网盾星球-fff2cc.svg" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本网站源码由Github提供存储仓库"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src=" https://sourcebucket.s3.ladydaily.com/badge/Source-Github-d021d6.svg" alt=""/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="share" type="button" title="右键模式" onclick="changeMouseMode()"><i class="fas fa-mouse"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog right_side"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button class="share" type="button" title="分享链接" onclick="share()"><i class="fas fa-share-nodes"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0<span>%</span></span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/personal/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/4.0.31/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);
+document.getElementById('loading-box').addEventListener('click',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'http://akiha0.ddns.net:82/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'http://akiha0.ddns.net:82/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.staticfile.org/twikoo/1.6.38/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"></script><script async src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script><script async src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/element-ui/2.15.6/index.js"></script><script async src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script async src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="https://cdn.tianli0.top/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script async src="https://at.alicdn.com/t/c/font_3586335_hsivh70x0fm.js"></script><script async src="https://at.alicdn.com/t/c/font_3636804_gr02jmjr3y9.js"></script><script async src="https://at.alicdn.com/t/c/font_3612150_kfv55xn3u2g.js"></script><script async src="https://cdn.wpon.cn/2022-sucai/Gold-ingot.js"></script><canvas id="universe"></canvas><canvas id="snow"></canvas><script defer src="/js/fomal.js"></script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn1.tianli0.top/npm/js-heo@1.0.12/metingjs/Meting.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show","#web_bg",".js-pjax","#bibi","body > title","#app","#tag-echarts","#posts-echart","#categories-echarts"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="http://akiha.ddns.net/categories/计算机基础/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍼 Akihaの计算机基础笔记 (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://akiha.ddns.net/categories/演示/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍥 Akihaの案例演示笔记 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="http://akiha.ddns.net/categories/" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(33.333333333333336% - 5px);background: #e9e9e9;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: var(--text-bg-hover)}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/20240728a.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_2.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-28</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/20240728a.html&quot;);" href="javascript:void(0);" alt="">运维工作周报模板</a><div class="blog-slider__text">🥧运维工作周报模板</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/20240728a.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/20240725.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_2.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-25</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/20240725.html&quot;);" href="javascript:void(0);" alt="">linux基础操作命令</a><div class="blog-slider__text">🥧本文汇总linux基础操作命令，可作为文档进行查询</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/20240725.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/20240806.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_2.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-06</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/20240806.html&quot;);" href="javascript:void(0);" alt="">docker 常用命令大全</a><div class="blog-slider__text">🥧docker 常用命令大全</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/20240806.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2013454d.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_14.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2022-08-09</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2013454d.html&quot;);" href="javascript:void(0);" alt="">Markdown语法与外挂标签写法汇总</a><div class="blog-slider__text">🥧本文汇总Markdown格式以及外挂标签在网页端的渲染效果，可作为文档进行查询</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2013454d.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('gitZone');
+      var item_html = '<div class="recent-post-item" id="gitcalendarBar" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 320px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('gitZone') && (location.pathname ==='/site/census/'|| '/site/census/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("/api?null",['#d9e0df', '#c6e0dc', '#a8dcd4', '#9adcd2', '#89ded1', '#77e0d0', '#5fdecb', '#47dcc6', '#39dcc3', '#1fdabe', '#00dab9'],'null')
+    }
+  </script><!-- hexo injector body_end end --></body></html>
